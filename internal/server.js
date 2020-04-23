@@ -15,15 +15,15 @@ const app = express();
 app.use(bodyParser.json());
 
 //connect to Firestore
-//const Firestore = require('@google-cloud/firestore');
+const Firestore = require('@google-cloud/firestore');
 
-/*const db = new Firestore({
+const db = new Firestore({
   projectId: 'dtc-attendee124',
-  keyFilename: '/path/to/keyfile.json',
-});*/
+  keyFilename: './db.json',
+});
 
 //read data
-/*db.collection('Events').get()
+db.collection('Events').get()
   .then((snapshot) => {
     snapshot.forEach((doc) => {
       console.log(doc.id, '=>', doc.data());
@@ -32,7 +32,6 @@ app.use(bodyParser.json());
   .catch((err) => {
     console.log('Error getting documents', err);
   });
-  */
 
 // mock events data - for a real solution this data should be coming 
 // from a cloud data store
