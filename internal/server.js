@@ -18,29 +18,35 @@ app.use(bodyParser.json());
 const Firestore = require('@google-cloud/firestore');
 
 const db = new Firestore({
-  projectId: 'dtc-attendee124',
-  keyFilename: './db.json',
+  projectId: 'dtc-attendee126'
 });
 
 //read data
-db.collection('Events').get()
+var mockEvents = {};
+var key = 'events';
+mockEvents[key] = [];
+db.collection('events').get()
   .then((snapshot) => {
-    snapshot.forEach((doc) => {
-      console.log(doc.id, '=>', doc.data());
+     snapshot.forEach((doc) => {
+	      //console.log(doc.id, '=>', doc.data());
+		var event = doc.data();
+	     mockEvents[key].push(event);
     });
+	  console.log(mockEvents);
   })
   .catch((err) => {
     console.log('Error getting documents', err);
   });
 
+
 // mock events data - for a real solution this data should be coming 
 // from a cloud data store
-const mockEvents = {
+/*const mockEvents = {
     events: [
         { title: 'cloud native bootcamp', id: 1, description: 'something really cool', likes: 3 },
         { title: 'another event', id: 2, description: 'something even cooler', likes: 5 }
     ]
-};
+};*/
 
 
 
