@@ -7,13 +7,16 @@
   <meta name="HandheldFriendly" content="True" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <style>
+    html {
+        background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(119,128,180,1) 33%, rgba(0,212,255,1) 100%);
+    }
 	h1 {
 		text-align: center;
 		color: purple;
 	}
 
 	h2 {
-		color: purple;
+		color: white;
 	}
 
 	.button {
@@ -26,18 +29,33 @@
 	}
 
 	input[type=text] {
-		  width: 70%;
+		  width: 50%;
 		  padding: 10px 10px;
 		  margin: 5px 0;
 		  display: inline-block;
 		  border: 1px solid #ccc;
 		  border-radius: 4px;
 		  box-sizing: border-box;
+          
 	}
 
 	body {
-	    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	    font-family: 'Segoe UI';
 	}
+    
+    .eventCreate {
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+
+    #bottom_content {
+        color: white;
+        text-align: center;
+        margin: 0 auto;
+        width: 750px;
+    }
+
   </style>
 </head>
 <body>
@@ -45,18 +63,18 @@
       <h1>D-Native Events</h1>
 </div>
 
-<div style="background-color: teal; color: white; text-align: center; padding: 20px; ">
+<div class="eventCreate">
     <form action="/event" method="post">
 	    <label for="title">Title</label><br />
 	    <input name="title" type="text" /> <br />
 	    <label for="description">Description</label><br />
 	    <input name="description" type="text" /> <br />
 	    <br />
-            <input type="submit" name="submit" value="Add new event" class="button" />	
+        <input class="button" type="submit" name="submit" value="Add new event" />	
     </form>
   </div>
 
-  <div>
+  <div id="bottom_content">
 	  <h2>Recently Added</h2>
 	  <br />
 	  {{{body}}}
